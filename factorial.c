@@ -34,7 +34,7 @@ int main(){
         tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC;
 
 
-        printf("El factorial de %d es: %lld\n", num, resultado);
+        //printf("El factorial de %d es: %lld\n", num, resultado);
         printf("Tiempo: %f\n", tiempo);
     }
     return 0;
