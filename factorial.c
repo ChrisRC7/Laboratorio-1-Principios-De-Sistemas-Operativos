@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <time.h>
 
+volatile long long sink;
+
 long long factorial(long n){
     if(n == 0 || n == 1) {
         return 1;
@@ -12,7 +14,6 @@ long long factorial(long n){
 
 int main(){
     int num;
-    long long resultado;
 
     clock_t inicio, fin;
     double tiempo;
@@ -27,12 +28,11 @@ int main(){
 
         inicio = clock();
         
-        resultado = factorial(num);
+        sink = factorial(num);
 
         fin = clock();
 
         tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC;
-
 
         //printf("El factorial de %d es: %lld\n", num, resultado);
         printf("Tiempo: %f\n", tiempo);
