@@ -1,9 +1,7 @@
-#include <sys/resource.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <time.h>
 
-long factorial(long n){
+long long factorial(long n){
     if(n == 0 || n == 1) {
         return 1;
     }
@@ -12,30 +10,32 @@ long factorial(long n){
     }
 }
 
-int main(long argc, char *argv[]){
-    struct rlimit rl;
-    if (getrlimit(RLIMIT_STACK, &rl) == 0) {
-        rl.rlim_cur = rl.rlim_max;  // subir soft limit al máximo permitido
-        setrlimit(RLIMIT_STACK, &rl);
+int main(){
+    int num;
+    long long resultado;
+
+    clock_t inicio, fin;
+    double tiempo;
+    int i= 3;
+
+    while(i--){
+        printf("Ingrese un número para calcular su factorial: ");
+        if (scanf("%d", &num) != 1) {
+            fprintf(stderr, "Error: entrada inválida\n");
+            return 1;
+        }
+
+        inicio = clock();
+        
+        resultado = factorial(num);
+
+        fin = clock();
+
+        tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC;
+
+
+        printf("El factorial de %d es: %lld\n", num, resultado);
+        printf("Tiempo: %f\n", tiempo);
     }
-
-    if(argc != 2){
-        printf("Uso: ./factorial numero\n");
-        return 1;
-    }
-
-    long num = atol(argv[1]);
-
-    clock_t inicio = clock();
-
-    long resultado = factorial(num);
-
-    clock_t fin = clock();
-
-    double tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC;
-
-    //printf("Factorial: %ld\n", resultado);
-    printf("Tiempo: %f\n", tiempo);
-
     return 0;
 }
