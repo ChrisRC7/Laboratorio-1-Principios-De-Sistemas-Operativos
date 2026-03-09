@@ -17,25 +17,23 @@ int main(){
 
     clock_t inicio, fin;
     double tiempo;
-    int i= 3;
 
-    while(i--){
-        printf("Ingrese un número para calcular su factorial: ");
-        if (scanf("%d", &num) != 1) {
-            fprintf(stderr, "Error: entrada inválida\n");
-            return 1;
-        }
-
-        inicio = clock();
-        
-        sink = factorial(num);
-
-        fin = clock();
-
-        tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC;
-
-        //printf("El factorial de %d es: %lld\n", num, resultado);
-        printf("Tiempo: %f\n", tiempo);
+    printf("Ingrese un número para calcular su factorial: ");
+    if (scanf("%d", &num) != 1) {
+        fprintf(stderr, "Error: entrada inválida\n");
+        return 1;
     }
+
+    inicio = clock();
+        
+    sink = factorial(num);
+
+    fin = clock();
+
+    tiempo = (double)(fin - inicio) / CLOCKS_PER_SEC;
+
+    //printf("El factorial de %d es: %lld\n", num, resultado);
+    printf("Tiempo: %f\n", tiempo);
+    
     return 0;
 }

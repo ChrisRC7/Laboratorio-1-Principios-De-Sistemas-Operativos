@@ -8,17 +8,12 @@ def factorial(n):
         return 1
     return n * factorial(n-1)
 
-i=3
+input_str = input("Ingrese un número para calcular su factorial: ")
+num = int(input_str)
 
-while i:
+inicio = time.time()
+resultado = factorial(num)
+fin = time.time()
 
-    input_str = input("Ingrese un número para calcular su factorial: ")
-    num = int(input_str)
-
-    inicio = time.time()
-    resultado = factorial(num)
-    fin = time.time()
-
-    #print("Factorial:", resultado)
-    print("Tiempo:", fin - inicio)
-    i -= 1
+#print("Factorial:", resultado)
+print("Tiempo:", fin - inicio)
